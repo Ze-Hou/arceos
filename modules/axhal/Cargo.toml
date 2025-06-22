@@ -38,6 +38,7 @@ axcpu = "0.1"
 axlog = { workspace = true }
 axconfig = { workspace = true }
 axalloc = { workspace = true, optional = true }
+tock-registers = "0.8"
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
 x86 = "0.52"

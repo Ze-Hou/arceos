@@ -504,6 +504,7 @@ dependencies = [
  "riscv_goldfish",
  "sbi-rt",
  "static_assertions",
+ "tock-registers 0.8.1",
  "x2apic",
  "x86",
  "x86_64 0.15.2",
