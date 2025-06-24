@@ -112,6 +112,6 @@ psci-method = "hvc"             # str
 rtc-paddr = 0x901_0000          # uint
 
 # PL061 Address
-pl061-paddr = 0x0903_0000        # uint
+gpio-paddr = 0x0903_0000        # uint
 # PL061 IRQ number
 gpio-irq = 7                     # uint

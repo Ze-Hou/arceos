@@ -16,7 +16,6 @@ cfg_if::cfg_if! {
     } else if #[cfg(all(target_arch = "aarch64", platform_family = "aarch64-qemu-virt"))] {
         mod aarch64_qemu_virt;
         pub use self::aarch64_qemu_virt::*;
-        mod pl061;
     } else if #[cfg(all(target_arch = "aarch64", platform_family = "aarch64-raspi"))] {
         mod aarch64_raspi;
         pub use self::aarch64_raspi::*;
