@@ -38,6 +38,7 @@ qemu_args-riscv64 := \
 qemu_args-aarch64 := \
   -cpu cortex-a72 \
   -machine $(machine) \
+  -device i6300esb \
   -kernel $(FINAL_IMG)
 
 qemu_args-loongarch64 := \
@@ -80,6 +81,14 @@ qemu_args-$(GRAPHIC) += \
 
 ifeq ($(GRAPHIC), n)
   qemu_args-y += -nographic
+endif
+
+ifeq ($(ARCH), aarch64)
+  ifeq ($(GICV3),y)
+    qemu_args-y += -machine gic-version=3
+  else
+    qemu_args-y += -machine gic-version=2
+  endif
 endif
 
 ifeq ($(QEMU_LOG), y)

@@ -115,3 +115,8 @@ rtc-paddr = 0x901_0000          # uint
 gpio-paddr = 0x0903_0000        # uint
 # PL061 IRQ number
 gpio-irq = 7                     # uint
+
+# WDT Address
+wdt-paddr = 0x1000_8000         # uint
+# WDT IRQ number
+wdt_irq = 5                     # uint

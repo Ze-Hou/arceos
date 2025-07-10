@@ -41,7 +41,7 @@ pub(crate) unsafe extern "C" fn rust_entry_secondary(cpu_id: usize) {
     crate::cpu::init_secondary(cpu_id);
     rust_main_secondary(cpu_id);
 }
-
+// pub mod watchdog;
 /// Initializes the platform devices for the primary CPU.
 ///
 /// For example, the interrupt controller and the timer.
@@ -51,6 +51,7 @@ pub fn platform_init() {
     super::aarch64_common::generic_timer::init_percpu();
     super::aarch64_common::pl011::init();
     super::aarch64_common::pl061::init_gpio();
+    // watchdog::watchdog_init();
 }
 
 /// Initializes the platform devices for secondary CPUs.

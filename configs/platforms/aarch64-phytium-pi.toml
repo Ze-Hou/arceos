@@ -40,6 +40,10 @@ mmio-regions = [
     [0x2800_E000, 0x1000],  # UART 2
     [0x2800_F000, 0x1000],  # UART 3
 
+    [0x3080_0000, 0x2_0000], # GICD
+    [0x3084_0000, 0x2_0000], # GICC
+    [0x3088_0000, 0x2_0000], # GICR
+
     [0x3000_0000, 0x800_0000],  # other devices
     [0x4000_0000, 0x1000_0000], # Pcie ecam
 
@@ -57,6 +61,9 @@ mmio-regions = [
     [0x000_2803_7000, 0x1000],  # GPIO3
     [0x000_2803_8000, 0x1000],  # GPIO4
     [0x000_2803_9000, 0x1000],  # GPIO5
+
+    [0x000_2804_0000, 0x2000],  # SBSA-GWDT0
+    [0x000_2804_2000, 0x2000],  # SBSA-GWDT1
 ]                               # [(uint, uint)]
 # VirtIO MMIO regions with format (`base_paddr`, `size`).
 virtio-mmio-regions = []        # [(uint, uint)]
@@ -75,11 +82,11 @@ uart-paddr = 0x2800_D000        # uint
 # UART IRQ number
 uart-irq = 0x54                 # uint
 
+gicd-paddr = 0x3080_0000        # uint
+# GIC Redistributor base address
+gicr-paddr = 0x3088_0000        # uint
 # GIC CPU Interface base address
-gicc-paddr = 0x3080_0000        # uint
-# GIC Distributor base address
-# (TODO: gicv3 dosen't support yet, there is no gicd and need a gicr address)
-gicd-paddr = 0x3088_0000        # uint
+gicc-paddr = 0x3084_0000        # uint
 
 # PSCI
 psci-method = "smc"             # str
