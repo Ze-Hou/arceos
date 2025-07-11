@@ -1,4 +1,5 @@
 pub mod mem;
+pub mod uart;
 
 #[cfg(feature = "smp")]
 pub mod mp;
@@ -9,6 +10,7 @@ pub mod irq {
 }
 
 pub mod console {
+    pub use super::uart::*;
     pub use crate::platform::aarch64_common::pl011::*;
 }
 
@@ -48,7 +50,7 @@ pub(crate) unsafe extern "C" fn rust_entry_secondary(cpu_id: usize) {
     crate::cpu::init_secondary(cpu_id);
     rust_main_secondary(cpu_id);
 }
-pub mod watchdog;
+
 /// Initializes the platform devices for the primary CPU.
 ///
 /// For example, the interrupt controller and the timer.
@@ -58,7 +60,6 @@ pub fn platform_init() {
     super::aarch64_common::gic::init_primary();
     super::aarch64_common::generic_timer::init_percpu();
     super::aarch64_common::pl011::init();
-    watchdog::Watchdog_init();
 }
 
 /// Initializes the platform devices for secondary CPUs.
